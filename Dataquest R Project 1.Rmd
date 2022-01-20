@@ -1,0 +1,60 @@
+---
+title: "Dataquest R Project 2"
+author: "Crispin Stromberg"
+date: "August 20, 2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+
+
+## Exploring Data Set
+number of rows, cols
+names and types of columns
+values of price column
+```{r}
+
+book_reviews <- read_csv("c:/Users/crisp/Downloads/book_reviews.csv")
+
+dim(book_reviews) #number of rows and columns in dataset
+
+#iterate through columns with name and data type
+
+i<-1
+
+for(i in 1: ncol(book_reviews)) {
+  name_col <- colnames(book_reviews[, i])
+ type_col <- typeof(book_reviews[[name_col]])
+  print(c("Name: ", name_col, "Type: ", type_col))
+}
+
+# could have accomplished this with glimpse(book_reviews) but even dim gave that information
+min(book_reviews[["price"]])
+max(book_reviews[["price"]])
+
+
+
+```
+
+#Clean Data
+remove na
+```{r}
+new_book_reviews <- c()
+
+for(i in 1: nrow(book_reviews)){
+  new_book_reviews <- book_reviews %>% 
+      filter(!(is.na(book_reviews[i,])))
+}
+
+dim(new_book_reviews)
+
+
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
