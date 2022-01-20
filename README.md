@@ -1,2 +1,2 @@
-# trans_data
-This project explores transgender health data
+# Learning-Mini-Project
+R and Python mini-projects for practice and learning.
